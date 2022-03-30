@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Live-Timing Ski Version 1.0</title>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <script src="js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="styles.css">
+   </head>
+   <body>
+      <div class="container">
+         <header>
+            <div class="logo"></div>
+            <div class="dropdown right-align">
+               <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+               English
+               </button>
+               <div class="dropdown-menu">
+                  <a class="dropdown-item" href="index.html">English</a>
+                  <a class="dropdown-item" href="index_ge.html">Deutsch</a>
+                  <a class="dropdown-item" href="index_fr.html">Français</a>
+                  <a class="dropdown-item" href="index_it.html">Italiano</a>
+               </div>
+            </div>
+         </header>
+         <main>
+            <div id="event_list" class="page">
+               <div class="subboard">
+                  <div class="subtitle">
+                     <h3>Live Events</h3>
+                  </div>
+                  <table class="table table-scoreboard eventboard">
+                     <thead>
+                        <tr>
+                           <th class="col-4">Event</th>
+                           <th class="col-6">Competition</th>
+                           <th class="col-2">Event Date</th>
+                        </tr>
+                     </thead>
+                     <tbody id="live-events">
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+            <div id="event_view" class="page">
+               <nav class="navbar navbar-expand-sm navbar-dark navbar-dark">
+                  <ul class="nav nav-pills">
+                     <li class="nav-item">
+                        <div id="nav-live" class="nav-link active">Live</div>
+                     </li>
+                     <li class="nav-item">
+                        <div id="nav-startlist" class="nav-link">Start List</div>
+                     </li>
+                     <li class="nav-item">
+                        <div id="nav-ranking" class="nav-link">Ranking</div>
+                     </li>
+                  </ul>
+                  <div class="dropdown pagelink">
+                     <button id="goto-events" type="button" class="btn btn-secondary">Event List</button>
+                  </div>
+               </nav>
+               <div class="title">
+                  <div class="clear">
+                     <h2 id="meeting-title" >&nbsp</h2>
+                  </div>
+                  <div class="right-align">
+                     <h2 id="event-date" >&nbsp</h2>
+                  </div>
+                  <div class="clear">
+                     <h4 id="event-title" >&nbsp</h4>
+                  </div>
+               </div>
+               <section id="sec-live">
+                  <div id="start-list-body" class="subboard">
+                     <div class="subtitle">
+                        <h3>Start List</h3>
+                     </div>
+                     <table class="table table-scoreboard">
+                        <thead>
+                           <tr>
+                              <th class="col-1">Num</th>
+                              <th class="col-3">Name</th>
+                              <th class="col-1">Gender</th>
+                              <th class="col-1">Year</th>
+                              <th class="col-2">Club</th>
+                              <th class="col-2">Nation</th>
+                              <th class="col-2">Start time</th>
+                           </tr>
+                        </thead>
+                        <tbody id="live-atstart">
+                        </tbody>
+                     </table>
+                  </div>
+                  <div id="inter-body">
+                  </div>
+                  <div id="to-finish-body" class="subboard">
+                     <div class="subtitle highlight">
+                        <h3>To finish</h3>
+                     </div>
+                     <table class="table table-scoreboard highlight">
+                        <thead>
+                           <tr>
+                              <th class="col-1">Num</th>
+                              <th class="col-3">Name</th>
+                              <th class="col-1">Gender</th>
+                              <th class="col-1">Year</th>
+                              <th class="col-2">Club</th>
+                              <th class="col-2">Nation</th>
+                              <th class="col-2">Time</th>
+                           </tr>
+                        </thead>
+                        <tbody id="live-realtime">
+                        </tbody>
+                     </table>
+                  </div>
+                  <div id="at-finish-body" class="subboard">
+                     <div class="subtitle">
+                        <h3>At Finish</h3>
+                     </div>
+                     <table class="table table-scoreboard">
+                        <thead>
+                           <tr>
+                              <th class="col-1">Num</th>
+                              <th class="col-2">Name</th>
+                              <th class="col-1">Gender</th>
+                              <th class="col-1">Year</th>
+                              <th class="col-1">Club</th>
+                              <th class="col-1">Nation</th>
+                              <th class="col-2">Net time</th>
+                              <th class="col-2">Gap</th>
+                              <th class="col-1">Rank</th>
+                           </tr>
+                        </thead>
+                        <tbody id="live-atfinish">
+                        </tbody>
+                     </table>
+                  </div>
+                  <div id="ranking-body" class="subboard">
+                     <div class="subtitle">
+                        <h3>Ranking</h3>
+                     </div>
+                     <table class="table table-scoreboard">
+                        <thead>
+                           <tr>
+                              <th class="col-1">Rank</th>
+                              <th class="col-1">Num</th>
+                              <th class="col-2">Name</th>
+                              <th class="col-1">Gender</th>
+                              <th class="col-1">Year</th>
+                              <th class="col-1">Club</th>
+                              <th class="col-1">Nation</th>
+                              <th class="col-2">Net time</th>
+                              <th class="col-2">Gap</th>
+                           </tr>
+                        </thead>
+                        <tbody id="live-ranking">
+                        </tbody>
+                     </table>
+                  </div>
+                  <!--<button class="btn btn-success load">Load</button>-->
+               </section>
+               <section id="sec-inter" style="display: none">
+                  <div class="subboard">
+                     <div class="subtitle highlight">
+                        <h3>Inter1</h3>
+                     </div>
+                     <table class="table table-scoreboard highlight">
+                        <thead>
+                           <tr>
+                              <th class="col-1">Num</th>
+                              <th class="col-3">Name</th>
+                              <th class="col-1">Gender</th>
+                              <th class="col-1">Year</th>
+                              <th class="col-2">Club</th>
+                              <th class="col-2">Nation</th>
+                              <th class="col-2">Time</th>
+                           </tr>
+                        </thead>
+                        <tbody id="live-Inter1">
+                        </tbody>
+                        <tbody id="hist-Inter1">
+                        </tbody>
+                     </table>
+                  </div>
+               </section>
+               <section id="sec-startlist" style="display: none;">
+                  <div class="subboard">
+                     <table class="table table-scoreboard">
+                        <thead>
+                           <tr>
+                              <th class="col-1">Pos</th>
+                              <th class="col-1">Num</th>
+                              <th class="col-2">Horse</th>
+                              <th class="col-3">Rider</th>
+                              <th class="col-1">Nation</th>
+                              <th class="col-1 small-font">Round/Point</th>
+                              <th class="col-1 small-font">Round/Time</th>
+                              <th class="col-1 small-font">Jump-Off/Point</th>
+                              <th class="col-1 small-font">Jump-Off/Time</th>
+                           </tr>
+                        </thead>
+                        <tbody id="startlist">
+                        </tbody>
+                     </table>
+                  </div>
+               </section>
+               <section id="sec-ranking" style="display: none;">
+                  <div class="subboard">
+                     <table class="table table-scoreboard">
+                        <thead>
+                           <tr>
+                              <th class="col-1">Rank</th>
+                              <th class="col-1">Num</th>
+                              <th class="col-2">Horse</th>
+                              <th class="col-3">Rider</th>
+                              <th class="col-1">Nation</th>
+                              <th class="col-1 small-font">Round/Point</th>
+                              <th class="col-1 small-font">Round/Time</th>
+                              <th class="col-1 small-font">Jump-Off/Point</th>
+                              <th class="col-1 small-font">Jump-Off/Time</th>
+                           </tr>
+                        </thead>
+                        <tbody id="ranking">
+                        </tbody>
+                     </table>
+                  </div>
+               </section>
+            </div>
+            <div class="errors">
+               <div id="error_noevent" class="alert alert-danger" style="display: none;">There is no running event.</div>
+               <div id="error_finishevent" class="alert alert-danger" style="display: none;">Event is finished.</div>
+            </div>
+         </main>
+         <footer>© 2015-2022 www.weratv.ch, CH-3176 Neuenegg. All Rights Reserved.</footer>
+      </div>
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="/main.js"></script>
+   </body>
+</html>
